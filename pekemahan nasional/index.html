@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PERKANAS HAMZANWADI IV 2025</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Tahoma, sans-serif;
+      scroll-behavior: smooth;
+      background: #f8f8f8;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgb(0, 77, 4);
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    header .logo img { height: 80px; }
+    header .logo span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 40px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav ul li a:hover { color: #ddd; }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: white;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.4s ease;
+    }
+    nav ul li a:hover::after { width: 100%; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      background: url('Gambar WhatsApp 2025-09-30 pukul 09.42.30_92939e97.jpg') no-repeat center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 80px;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 20px;
+    }
+    .hero-logo {
+      width: 300px;
+      margin-bottom: 20px;
+    }
+    .text-wrapper {
+      padding: 20px;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInHero 2.5s ease forwards;
+    }
+    .text-wrapper h1 {
+      font-size: 2.5rem;
+      color: #fff;
+    }
+    .text-wrapper p { margin-top: 15px; }
+    @keyframes fadeInHero {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .btn {
+      padding: 15px 30px;
+      margin: 40px 15px 0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      background: green;
+      color: white;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    .btn:hover { background: darkgreen; }
+
+    /* About */
+    .about {
+      background: white;
+      padding: 40px 10px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 60px auto;;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-text { 
+      flex: 1 1 500px; 
+      padding: 20px; }
+
+    .about-text h2 { 
+      font-size: 2rem; 
+      color: green; 
+      margin-bottom: 10px; }
+
+    .about-image { 
+      flex: 1 1 100px; 
+      padding: 20px; }
+
+    .about-image img { 
+      width: 100%; 
+      border-radius: 10px; }
+
+    /* Registration */
+    .registration {
+      background: #f4f8f4;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .registration h2 {
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+      color: green;
+    }
+
+    /* Steps Slider */
+    .steps-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .steps-slider {
+      display: flex;
+      transition: transform 1.5s ease-in-out;
+      width: 100%;
+    }
+    .steps-slider .step {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .step-number {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: green;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-content h3 { margin: 0 0 10px; font-size: 1.3rem; color: #111; }
+    .step-content p { margin: 0; color: #333; line-height: 1.6; }
+
+    /* Arrows */
+    .arrow {
+      background: green;
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .prev { left: -50px; }
+    .next { right: -50px; }
+    .arrow:hover { background: darkgreen; }
+
+    /* Dots */
+    .slider-dots { text-align: center; margin-top: 15px; }
+    .slider-dots span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: #ccc;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .slider-dots span.active { background: green; }
+
+    /* Rundown */
+    .rundown {
+      background: #eaf2ea;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .rundown h2 {
+      font-size: 1.8rem;
+      color: green;
+      margin-bottom: 30px;
+    }
+    .rundown-slider {
+      display: flex;
+      transition: transform 1.5s ease-in-out;
+      width: 100%;
+    }
+    .rundown-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .rundown-box {
+      min-width: 100%;
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: left;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .rundown-box h3 { color: green; }
+    .rundown-box ul { list-style: none; padding: 0; }
+    .rundown-box ul li {
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 4px solid green;
+      background: #f9f9f9;
+    }
+
+    /* Footer */
+    footer {
+      background: #126b00;
+      color: #fff;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    footer > div { flex: 1 1 220px; }
+    footer h3 { color: rgb(255, 255, 255); margin-bottom: 15px; }
+    footer .footer-logo img { height: 150px; margin-bottom: 40px; }
+    footer ul { list-style: none; padding: 0; margin: 0; }
+    footer ul li { margin: 8px 0; }
+    footer ul li a { color: #ffffff; text-decoration: none; transition: 0.3s; }
+    footer ul li a:hover { color: green; }
+    .footer-contact li { display: flex; align-items: center; gap: 10px; }
+    .socials { display: flex; gap: 15px; }
+    .socials img {
+      width: 25px; height: 25px;
+      transition: 0.3s;
+    }
+    .socials img:hover { filter: invert(41%) sepia(100%) saturate(500%) hue-rotate(90deg); }
+
+    /* Fade in for scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.8s ease, transform 1.8s ease;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">
+    <img src="versi putih.png" alt="Logo">
+    <span>PERKANAS HAMZANWADI IV</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#registration">Registration</a></li>
+      <li><a href="#rundown">Rundown</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img src="versi putih.png" alt="Logo" class="hero-logo">
+    <div class="text-wrapper">
+      <h1>PERKEMAHAN NASIONAL HAMZANWADI IV 2025<br>"Meneladani Jejak sang Pahlawan, Membangun Karakter Bangsa”</h1>
+      <p>PERKANAS HAMZANWADI KE-IV adalah kegiatan perkemahan besar Pramuka Penggalang dan Penegak sebagai sarana pembinaan Pramuka Santri.</p>
+    </div>
+    <a href="https://forms.gle/Khe44Jdevq4NdKiE7" target="_blank" class="btn">Join Us</a>
+    <a href="#about" class="btn">Read More</a>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about fade-in" id="about">
+  <div class="about-text">
+    <h2>ABOUT PERKANAS</h2>
+    <p>PERKANAS HAMZANWADI KE-IV adalah kegiatan perkemahan dalam 
+       bentuk perkemahan besar Pramuka Penggalang dan Penegak sebagai sarana 
+       pembinaan Pramuka Santri yang menitikberatkan pada pengembangan diri peserta 
+       yang terdiri atas bidang persatuan dan persaudaraan, prestasi, ibadah, mental, 
+       intelektual, spiritual, keterampilan, kesenian, ketangkasan dan bahasa. 
+      Dalam rangka memperingati hari Pahlawan 10 November 2025 Kami berencana 
+      untuk mengadakan kegiatan perkemahan pramuka dengan tajuk “PERKANAS 
+      HAMZANWADI KE-IV”. Kegiatan ini merupakan rentetan dari kegiatan peringatan Hari 
+      Pahlawan Nasional 10 November yang bertujuan untuk mempererat ukhuwah 
+      Islamiyah antar Pondok Pesantren dengan melalui Pramuka, sehingga lahirlah bibit 
+      pemimpin masa depan yang akan menjalankan dan meneruskan estafet 
+      kepemimpinan Ummat dan Bangsa dimasa yang akan datang. 
+      PERKANAS HAMZANWADI KE-IV juga bertujuan untuk menumbuhkan rasa 
+      persaudaraan antara peserta yang berasal dari Madrasah dan Pondok Pesantren Se- 
+      Indonesia serta berupaya meningkatkan prestasi amaliyah dan ubudiyah santri.</p>
+  </div>
+  <div class="about-image">
+    <img src="https://picsum.photos/600/400?random=4" alt="About">
+  </div>
+</section>
+
+<!-- Registration -->
+<section class="registration fade-in" id="registration">
+  <h2>Registration Process</h2>
+  <div class="steps-container">
+    <div class="steps-slider" id="steps-slider">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Isi Formulir</h3>
+          <p>Lengkapi data peserta dengan benar.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Pembayaran</h3>
+          <p>Lakukan pembayaran sesuai instruksi.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Konfirmasi</h3>
+          <p>Kirim bukti pembayaran ke panitia.</p>
+        </div>
+      </div>
+    </div>
+    <button class="arrow prev" onclick="prevStep()">&#10094;</button>
+    <button class="arrow next" onclick="nextStep()">&#10095;</button>
+    <div class="slider-dots" id="slider-dots"></div>
+  </div>
+</section>
+
+<!-- Rundown -->
+<section class="rundown fade-in" id="rundown">
+  <h2>Rundown Acara</h2>
+  <div class="rundown-container">
+    <div class="rundown-slider" id="rundown-slider">
+      <div class="rundown-box">
+        <h3>Hari 1</h3>
+        <ul>
+          <li>08:00 - Registrasi Peserta</li>
+          <li>10:00 - Upacara Pembukaan</li>
+          <li>13:00 - Perkemahan dimulai</li>
+        </ul>
+      </div>
+      <div class="rundown-box">
+        <h3>Hari 2</h3>
+        <ul>
+          <li>07:00 - Senam Pagi</li>
+          <li>09:00 - Lomba Pramuka</li>
+          <li>19:00 - Api Unggun</li>
+        </ul>
+      </div>
+      <div class="rundown-box">
+        <h3>Hari 3</h3>
+        <ul>
+          <li>08:00 - Penjelajahan</li>
+          <li>14:00 - Pentas Seni</li>
+          <li>17:00 - Penutupan</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+  <div class="footer-logo">
+    <img src="versi putih.png" alt="Logo">
+    <p>PERKANAS HAMZANWADI IV 2025 mengarah kepada upaya pencapaian tujuan Gerakan Pramuka 
+       yang meliputi Pembinaan Ubudiyah, mengembangkan wawasan keilmuan, kebudayaan, ilmu pengetahuan dan 
+       teknologi, mengembangkan persaudaraan dan persahabatan, meningkatkan kecakapan dan prestasi, keterampilan, dan kesenian
+    </p>
+  </div>
+  <div>
+    <h3>Navigasi</h3>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#registration">Registration</a></li>
+      <li><a href="#rundown">Rundown</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+  <div>
+    <h3>Kontak</h3>
+    <ul class="footer-contact">
+      <li>📍 PONDOK PESANTREN MODERN NURUL HARAMAIN NWDI BOGOR</li>
+      <li>📞 +62 857-1468-5475 (Kak fauji)</li>
+      <li>📞 +62 813-1549-3687 (kak Al fath)</li>
+      <li>✉️ Perkanashamzanwadiiv@gmail.com</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Ikuti Kami</h3>
+    <div class="socials">
+      <a href="https://www.instagram.com/haramainnews_?utm_source=ig_web_button_share_sheet&igsh=Z3dpb3ZxM25seTI2"> 
+        <img src="logo ig.png" alt="IG"></a>
+      <a href="https://www.instagram.com/perkanas_hamzanwdi?utm_source=ig_web_button_share_sheet&igsh=MWx6YXhpODJjdGFhcA=">
+        <img src="logo ig.png" alt="IG"></a>
+      <a href="https://www.youtube.com/@HaramainTVBogor">
+        <img src="youtube.png" alt="YT"></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fade in saat scroll
+  const faders = document.querySelectorAll('.fade-in');
+  window.addEventListener('scroll', () => {
+    faders.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.classList.add('show');
+      }
+    });
+  });
+
+  // Steps slider
+  let currentStep = 0;
+  const stepsSlider = document.getElementById('steps-slider');
+  const totalSteps = stepsSlider.children.length;
+  const dotsContainer = document.getElementById('slider-dots');
+
+  for (let i=0; i<totalSteps; i++) {
+    const dot = document.createElement('span');
+    dot.addEventListener('click', ()=>goToStep(i));
+    dotsContainer.appendChild(dot);
+  }
+  function updateDots() {
+    dotsContainer.querySelectorAll('span').forEach((d,i)=>{
+      d.classList.toggle('active', i===currentStep);
+    });
+  }
+  function goToStep(i) {
+    currentStep = i;
+    stepsSlider.style.transform = `translateX(-${i*100}%)`;
+    updateDots();
+  }
+  function nextStep() {
+    currentStep = (currentStep+1)%totalSteps;
+    goToStep(currentStep);
+  }
+  function prevStep() {
+    currentStep = (currentStep-1+totalSteps)%totalSteps;
+    goToStep(currentStep);
+  }
+  goToStep(0);
+
+  // Rundown slider otomatis
+  let currentRundown = 0;
+  const rundownSlider = document.getElementById('rundown-slider');
+  const totalRundown = rundownSlider.children.length;
+  setInterval(()=>{
+    currentRundown = (currentRundown+1)%totalRundown;
+    rundownSlider.style.transform = `translateX(-${currentRundown*100}%)`;
+  }, 4000);
+</script>
+
+</body>
+</html>
